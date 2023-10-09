@@ -5,13 +5,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    print("Hello server")
-    return "<h1>Hello, World!</h1>"
-    
+    return render_template('home.html')
+
+
 @app.route("/home")
 def home():
     return render_template('home.html')
 
+
+@app.route('/aboutme')
+def aboutme():
+    return render_template('about.html')
 
 
 if __name__ == "__main__":
