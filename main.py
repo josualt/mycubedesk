@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
@@ -18,6 +18,22 @@ def hello_world():
 @app.route("/home")
 def home():
     return render_template('home.html')
+
+
+@app.route("/login")
+def login():
+    return render_template('login.html')
+
+
+@app.route('/login', methods=['POST'])
+def login_result():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    print(username, password)
+    if username == 'josu' and password == 'kaka':
+        return render_template('succes.html')
+    else:
+        return render_template('error.html')
 
 
 @app.route('/aboutme')
