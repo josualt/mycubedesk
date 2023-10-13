@@ -36,6 +36,20 @@ def login_result():
         return render_template('error.html')
 
 
+@app.route("/calculator")
+def calculate():
+    return render_template('calculator.html')
+
+
+@app.route('/calculate', methods=['POST'])
+def answer_result():
+    number1 = request.form.get('number1')
+    number2 = request.form.get('number2')
+    print(number1, number2)
+    result = int(number1) + int(number2)
+    return render_template('calculator.html', answer=result)
+
+
 @app.route('/aboutme')
 def aboutme():
     return render_template('about.html')
