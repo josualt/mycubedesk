@@ -1,8 +1,9 @@
 import os
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, session
 
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
+app.secret_key = 'BAD_SECRET_KEY'
 
 
 @app.route('/static/<path:path>')
@@ -31,6 +32,7 @@ def login_result():
     password = request.form.get('password')
     print(username, password)
     if username == 'josu' and password == 'kaka':
+        session['user'] = username
         return render_template('succes.html')
     else:
         return render_template('error.html')
@@ -53,6 +55,14 @@ def answer_result():
 @app.route('/aboutme')
 def aboutme():
     return render_template('about.html')
+
+
+@app.route('/private')
+def private():
+    if session.get('user'):
+        return render_template('private.html')
+    else:
+        return render_template('home.html')
 
 
 if __name__ == "__main__":
