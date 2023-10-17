@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mycubedesk</title>
+</head>
+<body>  
+  <h1>Mycubedesk site</h1>
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<footer>    <a href="/aboutme">About</a>
+    <a href="/login">Login</a>
+    <a href="/calculator">Calculator</a>
+    <a href="/private">Private</a></footer>
+</body>
+</html>
