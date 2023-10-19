@@ -1,3 +1,19 @@
 html {
-  background-color: aquamarine;
+  background-color: black;
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: black;
+}
+
+footer a {
+  color: olive;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: green;
+  text-decoration: underline;
 }
